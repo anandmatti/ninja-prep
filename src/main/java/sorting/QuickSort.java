@@ -3,7 +3,7 @@ package sorting;
 import java.util.Arrays;
 
 /**
- * Quick Sort Algorithms
+ * Quick Sort Algorithm
  * 1. Find the pivot index - pi
  * 2. Partition the array around pivot index (Pivot is at it's right place)
  * 3. Repeat the step 1 and 2 for array from low to pi - 1
@@ -21,7 +21,7 @@ import java.util.Arrays;
  *
  * @param <T>
  */
-public class QuickSort<T extends Integer> {
+public class QuickSort<T extends Comparable<T>> {
     T[] array;
 
     public QuickSort(T[] array) {
@@ -45,7 +45,7 @@ public class QuickSort<T extends Integer> {
         T pivot = array[high];
         int lastElementLessThanPivot = low - 1;
         for (int i = low; i < high; i++) {
-            if (array[i].compareTo(pivot) < 0) {
+            if (array[i] == null || pivot == null || array[i].compareTo(pivot) < 0) {
                 lastElementLessThanPivot++;
                 T temp = array[lastElementLessThanPivot];
                 array[lastElementLessThanPivot] = array[i];
@@ -57,22 +57,6 @@ public class QuickSort<T extends Integer> {
         array[high] = temp;
 
         return lastElementLessThanPivot + 1;
-    }
-
-    public static void main(String[] args) {
-        Integer[] array = {10, 0, 5, -10, 19, 20};
-        print( "Original Array - ", array );
-
-        QuickSort<Integer> quickSort = new QuickSort<>(array);
-        Integer[] sortedArray  = quickSort.sort();
-
-        print("Sorted Array - ", sortedArray );
-    }
-
-    private static void print(String message, Integer[] array) {
-        System.out.println(message);
-        Arrays.stream(array).forEach(item -> System.out.print(item + ","));
-        System.out.println();
     }
 }
 
