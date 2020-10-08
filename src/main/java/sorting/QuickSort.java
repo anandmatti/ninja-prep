@@ -3,7 +3,9 @@ package sorting;
 import java.util.Arrays;
 
 /**
- * Quick Sort Algorithm
+ * AlgoName - Quick Sort
+ * AlgoType - Divide and Conquer
+ * Algorithm Steps -
  * 1. Find the pivot index - pi
  * 2. Partition the array around pivot index (Pivot is at it's right place)
  * 3. Repeat the step 1 and 2 for array from low to pi - 1
