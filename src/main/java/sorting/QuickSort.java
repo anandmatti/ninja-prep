@@ -5,6 +5,11 @@ import java.util.Arrays;
 /**
  * AlgoName - Quick Sort
  * AlgoType - Divide and Conquer
+ * Time Complexity -
+ *     - Best - O(n log(n) )
+ *     - Average - O(n log(n))
+ *     - Worst - O(n^2)
+ *
  * Algorithm Steps -
  * 1. Find the pivot index - pi
  * 2. Partition the array around pivot index (Pivot is at it's right place)
@@ -14,6 +19,7 @@ import java.util.Arrays;
  * Options for Pivot
  * - Pick the first element
  * - Pick the last element
+ * - Pick the middle element
  * - Pick a random element
  * - Pick the median element
  * <p>
@@ -21,7 +27,9 @@ import java.util.Arrays;
  * - Put elements smaller than pivot to the left.
  * - Put elements greater than pivot to the right.
  *
- * @param <T>
+ * The implementation here takes last element for the pivot
+ *
+ * @param <T extends Comparable>
  */
 public class QuickSort<T extends Comparable<T>> {
     T[] array;
