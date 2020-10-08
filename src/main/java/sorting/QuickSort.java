@@ -25,11 +25,11 @@ public class QuickSort<T extends Comparable<T>> {
     T[] array;
 
     public QuickSort(T[] array) {
-        this.array = Arrays.copyOf( array, array.length);
+        this.array = Arrays.copyOf(array, array.length);
     }
 
     public T[] sort() {
-        quickSort(array, 0, array.length - 1 );
+        quickSort(array, 0, array.length - 1);
         return array;
     }
 
