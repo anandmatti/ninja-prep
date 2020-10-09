@@ -1,4 +1,4 @@
-package sorting;
+package algortihms.sorting;
 
 import java.util.Arrays;
 
@@ -27,7 +27,7 @@ import java.util.Arrays;
  * - Put elements smaller than pivot to the left.
  * - Put elements greater than pivot to the right.
  *
- * The implementation here takes last element for the pivot
+ * The implementation here takes last element for the pivot and takes NULLs at last approach
  *
  * @param <T extends Comparable>
  */
@@ -52,21 +52,33 @@ public class QuickSort<T extends Comparable<T>> {
     }
 
     private int partition(T[] array, int low, int high) {
-        T pivot = array[high];
+        T pivot = findPivot( array, low, high );
         int lastElementLessThanPivot = low - 1;
-        for (int i = low; i < high; i++) {
-            if (array[i] == null || pivot == null || array[i].compareTo(pivot) < 0) {
-                lastElementLessThanPivot++;
-                T temp = array[lastElementLessThanPivot];
-                array[lastElementLessThanPivot] = array[i];
-                array[i] = temp;
+        if (pivot != null) {
+            for (int i = low; i <= high; i++) {
+                if (array[i] != null && array[i].compareTo(pivot) < 0){
+                    lastElementLessThanPivot++;
+                    T temp = array[lastElementLessThanPivot];
+                    array[lastElementLessThanPivot] = array[i];
+                    array[i] = temp;
+                }
+            }
+            if ( array[high] != null ) {
+                T temp = array[lastElementLessThanPivot + 1];
+                array[lastElementLessThanPivot + 1] = array[high];
+                array[high] = temp;
             }
         }
-        T temp = array[lastElementLessThanPivot + 1];
-        array[lastElementLessThanPivot + 1] = array[high];
-        array[high] = temp;
 
         return lastElementLessThanPivot + 1;
+    }
+
+    private T findPivot(T[] array, int low, int high) {
+        int pi = high;
+        while ( array[pi] == null && pi > low){
+            pi--;
+        }
+        return array[pi];
     }
 }
 
